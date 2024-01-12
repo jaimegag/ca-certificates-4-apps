@@ -1,0 +1,21 @@
+apiVersion: kpack.io/v1alpha2
+kind: Image
+metadata:
+  name: cacert-sample-client
+  namespace: myapps
+spec:
+  builder:
+    kind: ClusterBuilder
+    name: default
+  cache:
+    volume:
+      size: 2G
+  failedBuildHistoryLimit: 10
+  imageTaggingStrategy: BuildNumber
+  serviceAccountName: default
+  source:
+    git:
+      revision: 558d2ab0f1e2a87b4e9c3ba7cf9adf84b4f0abce
+      url: https://github.com/jaimegag/ca-certificates-4-apps
+    subPath: sample-client
+  tag: harbor.rito.tkg-vsp-lab.hyrulelab.com/library/cacert-sample-client:latest
