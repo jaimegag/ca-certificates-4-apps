@@ -4,9 +4,21 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"os/exec"
 )
 
 func main() {
+
+    app := "ls"
+    arg0 := "-lart"
+    arg1 := "/etc/ssl/certs"
+    cmd := exec.Command(app, arg0, arg1)
+    stdout, err := cmd.Output()
+    if err != nil {
+        fmt.Println(err.Error())
+    }
+    fmt.Println(string(stdout))
+
 	if len(os.Args) != 2 {
 		fmt.Println("USAGE: ca-certificates <url>")
 		os.Exit(1)
