@@ -13,9 +13,9 @@ func main() {
     arg0 := "-lart"
     arg1 := "/etc/ssl/certs"
     cmd := exec.Command(app, arg0, arg1)
-    stdout, err := cmd.Output()
-    if err != nil {
-        fmt.Println(err.Error())
+    stdout, cerr := cmd.Output()
+    if cerr != nil {
+        fmt.Println(cerr.Error())
     }
     fmt.Println(string(stdout))
 
