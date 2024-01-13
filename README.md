@@ -1,6 +1,6 @@
 # ca-certificates 4 applications
 
-This reporistory focuses on demonstrating how to inject Custom CA certificates at runtme into containers built with Cloud Native Buildpacks, passing those certs as runtime bindings to be read and aded to the container trustore when the container starts.
+This reporistory focuses on demonstrating how to inject Custom CA certificates at runtme into containers built with Cloud Native Buildpacks, passing those certs as runtime bindings to be added to the container trustore when the container starts.
 
 At a high level the process consists in the following steps:
 1. Build Time: Build the application container image using the [ca-certificatess buildpack](https://github.com/paketo-buildpacks/ca-certificates).
@@ -20,7 +20,7 @@ We will use an existing installation of Tanzu Build Service / kpack with an exis
       version: 2.2.1
   ...
 ```
-Other versions should work, just make sure it includes the `paketo-buildpacks/ca-certificates` buildpack.
+Other builders and versions should work, just make sure they includes the `paketo-buildpacks/ca-certificates` buildpack.
 
 The `/sample-client/image.yaml` includes our Image definition. This can be reused as-is if you want to use the same application, just make sure you adjust the namespace and change the `spec.tag` to match your container registry.
 Create the Image:
