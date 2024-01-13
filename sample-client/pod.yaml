@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-client
+spec:
+  containers:
+    - name: sample-client
+      image: harbor.rito.tkg-vsp-lab.hyrulelab.com/library/cacert-sample-client@sha256:ac23fc3bc5685e1a193acd516d3447e3027528772bf20963b9b56cdb1c3db144
+      env:
+      - name: SERVICE_BINDING_ROOT
+        value: "/bindings"
+      volumeMounts:
+      - name: custom-ca-certs
+        mountPath: "/bindings/ca-certificates"
+        readOnly: true
+      args: ["https://192.168.14.190/"]
+  volumes:
+  - name: custom-ca-certs
+    secret:
+      secretName: custom-ca-certs
