@@ -6,9 +6,9 @@ At a high level the process consists in the following steps:
 1. Build Time: Build the application container image using the [ca-certificatess buildpack](https://github.com/paketo-buildpacks/ca-certificates).
     - This buildpack will contribute the `ca-cert-helper` layer to the application image
 2. Runtime: Provide the Custom CA certificates to the application at runtime using bindings
-    - If bindings have the right structure ([docs](https://docs.vmware.com/en/VMware-Tanzu-Buildpacks/services/tanzu-buildpacks/GUID-config-config-buildpack-kp.html#bindings)) and there is one or more bindings with type of `ca-certificates`, then `the ca-cert-helper`` adds all CA certificates from the bindings to the system truststore.
+    - If bindings have the right structure ([docs](https://docs.vmware.com/en/VMware-Tanzu-Buildpacks/services/tanzu-buildpacks/GUID-config-config-buildpack-kp.html#bindings)) and there is one or more bindings with type of `ca-certificates`, then `the ca-cert-helper` adds all CA certificates from the bindings to the system truststore.
 
-To help test all this we have included a few sample apps & configurations to facilitate things. These are the steps to demonstrate this end 2 end with a very simple application that uses the certificates to call another app/endpoint:
+To help test all this we have included a sample apps & configurations to facilitate things. These are the steps to demonstrate this end 2 end with a very simple application that uses the certificates to call another app/endpoint:
 
 ### Build Container Image
 We will use an existing installation of Tanzu Build Service / kpack with an existing ClusterBuilder that includes the [go-lite](https://docs.vmware.com/en/VMware-Tanzu-Buildpacks/services/tanzu-buildpacks/GUID-go-release-notes.html#tanzu-go-buildpack-2.2.1-lite) Language Family Buildpack with the ca-certificates builpack.
